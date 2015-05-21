@@ -6,5 +6,5 @@ class IntegerColumnValidator(IntegerSeriesValidator):
         super(IntegerColumnValidator, self).__init__(*args, **kwargs)
         self.label = label
 
-    def is_valid(self, dataframe):
-        return super(IntegerColumnValidator, self).is_valid(dataframe[self.label])
+    def validate(self, dataframe):
+        super(IntegerColumnValidator, self).validate(dataframe[self.label])
