@@ -11,3 +11,7 @@ class IntegerColumnTest(TestCase):
     def test_is_valid(self):
         column_validator = validators.IntegerColumn('label1')
         self.assertTrue(column_validator.is_valid(self.dataframe))
+
+    def test_is_invalid(self):
+        column_validator = validators.IntegerColumn('label2')
+        self.assertFalse(column_validator.is_valid(self.dataframe))
