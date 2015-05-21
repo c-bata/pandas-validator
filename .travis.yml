@@ -1,9 +1,8 @@
-language: python
-python: "3.4"
 sudo: false
+language: python
+python: 2.7
 env:
-  matrix:
-    - TOXENV=py27
-    - TOXENV=py34
-install: pip install -r ./requirements/test.txt
+  - TOXENV=py27
+  - TOXENV=py34
+install: pip install tox
 script: tox
