@@ -1,10 +1,10 @@
 from .series import *
 
 
-class IntegerColumn(IntegerSeries):
+class IntegerColumnVaridator(IntegerSeriesValidator):
     def __init__(self, label, *args, **kwargs):
-        super(IntegerColumn, self).__init__(*args, **kwargs)
+        super(IntegerColumnVaridator, self).__init__(*args, **kwargs)
         self.label = label
 
     def is_valid(self, dataframe):
-        return super(IntegerColumn, self).is_valid(dataframe[self.label])
+        return super(IntegerColumnVaridator, self).is_valid(dataframe[self.label])

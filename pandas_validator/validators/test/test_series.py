@@ -8,7 +8,7 @@ from pandas_validator.core.exceptions import ValidationError
 
 class BaseSeriesTest(TestCase):
     def setUp(self):
-        self.validator = validators.BaseSeries(series_type=np.int64)
+        self.validator = validators.BaseSeriesValidator(series_type=np.int64)
 
     def test_is_valid_when_given_int64_series(self):
         self.series = pd.Series([0, 1])
@@ -29,7 +29,7 @@ class BaseSeriesTest(TestCase):
 
 class IntegerSeriesTest(TestCase):
     def setUp(self):
-        self.validator = validators.IntegerSeries(min_value=0, max_value=2)
+        self.validator = validators.IntegerSeriesValidator(min_value=0, max_value=2)
 
     def test_is_invalid_by_too_low_value(self):
         self.series = pd.Series([-1, 0, 1, 2])

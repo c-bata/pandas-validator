@@ -3,7 +3,7 @@ import numpy as np
 from pandas_validator.core.exceptions import ValidationError
 
 
-class BaseSeries(object):
+class BaseSeriesValidator(object):
     def __init__(self, series_type=None):
         self.series_type = series_type
 
@@ -24,14 +24,14 @@ class BaseSeries(object):
             return True
 
 
-class IntegerSeries(BaseSeries):
+class IntegerSeriesValidator(BaseSeriesValidator):
     def __init__(self, min_value=None, max_value=None, series_type=np.int64):
-        super(IntegerSeries, self).__init__(series_type)
+        super(IntegerSeriesValidator, self).__init__(series_type)
 
         self.max_value, self.min_value = max_value, min_value
 
     def validate(self, series):
-        super(IntegerSeries, self).validate(series)
+        super(IntegerSeriesValidator, self).validate(series)
 
         if (self.max_value is not None and
                 len(series[series > self.max_value]) > 0):

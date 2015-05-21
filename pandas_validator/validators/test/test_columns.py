@@ -9,9 +9,9 @@ class IntegerColumnTest(TestCase):
         self.dataframe = pd.DataFrame({'label1': [0, 1], 'label2': [1., 2.]})
 
     def test_is_valid(self):
-        column_validator = validators.IntegerColumn('label1')
+        column_validator = validators.IntegerColumnVaridator('label1')
         self.assertTrue(column_validator.is_valid(self.dataframe))
 
     def test_is_invalid(self):
-        column_validator = validators.IntegerColumn('label2')
+        column_validator = validators.IntegerColumnVaridator('label2')
         self.assertFalse(column_validator.is_valid(self.dataframe))
