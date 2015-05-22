@@ -1,4 +1,4 @@
-from pandas_validator.validators import BaseSeriesValidator
+from pandas_validator.validators import ColumnValidatorMixin
 from pandas_validator.core.exceptions import ValidationError
 
 
@@ -15,7 +15,7 @@ class DataFrameValidator(object):
 
     def _run_column_validator(self, df):
         fields = [getattr(self, x) for x in dir(self) if not x.startswith('__')]
-        column_validators = [x for x in fields if isinstance(x, BaseSeriesValidator)]
+        column_validators = [x for x in fields if isinstance(x, ColumnValidatorMixin)]
 
         for v in column_validators:
             v.validate(df)
