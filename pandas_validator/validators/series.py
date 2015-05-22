@@ -40,3 +40,8 @@ class IntegerSeriesValidator(BaseSeriesValidator):
         if (self.min_value is not None and
                 len(series[series < self.min_value]) > 0):
             raise ValidationError('Series has the value smaller than min.')
+
+
+class FloatSeriesValidator(IntegerSeriesValidator):
+    def __init__(self, series_type=np.float64, *args, **kwargs):
+        super(FloatSeriesValidator, self).__init__(series_type=series_type, *args, **kwargs)
