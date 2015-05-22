@@ -23,13 +23,15 @@ And this can define validator like django form class.
 Getting Started
 ===============
 
-1. Installation
+Installation
+------------
 
 ::
 
     $ pip install pandas_validator
 
-2. Usage
+Usage
+-----
 
 Please see the following demo written by ipython notebook.
 
