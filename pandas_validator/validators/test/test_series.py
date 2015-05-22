@@ -6,7 +6,7 @@ from pandas_validator import validators
 from pandas_validator.core.exceptions import ValidationError
 
 
-class BaseSeriesTest(TestCase):
+class BaseSeriesValidatorTest(TestCase):
     def setUp(self):
         self.validator = validators.BaseSeriesValidator(series_type=np.int64)
 
@@ -26,7 +26,7 @@ class BaseSeriesTest(TestCase):
         series = pd.Series([0., 1.])
         self.assertRaises(ValidationError, self.validator.validate, series)
 
-class IntegerSeriesTest(TestCase):
+class IntegerSeriesValidatorTest(TestCase):
     def setUp(self):
         self.validator = validators.IntegerSeriesValidator(min_value=0, max_value=2)
 

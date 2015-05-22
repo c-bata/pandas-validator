@@ -4,7 +4,7 @@ import pandas as pd
 from pandas_validator import validators
 
 
-class IntegerColumnTest(TestCase):
+class IntegerColumnValidatorTest(TestCase):
     def setUp(self):
         self.dataframe = pd.DataFrame({'label1': [0, 1], 'label2': [1., 2.]})
 
