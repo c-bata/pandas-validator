@@ -1,5 +1,4 @@
 from unittest import TestCase
-import numpy as np
 import pandas as pd
 
 from pandas_validator import validators
@@ -7,33 +6,44 @@ from pandas_validator.core.exceptions import ValidationError
 
 
 class DataFrameValidatorFixture(validators.DataFrameValidator):
-    x_points = validators.IntegerColumnValidator('x')
-    y_points = validators.IntegerColumnValidator('y')
+    """Fixture for testing the validation of column type."""
+    integer_field = validators.IntegerColumnValidator('i')
+    float_field = validators.FloatColumnValidator('f')
 
 
 class DataFrameValidatorTest(TestCase):
+    """Testing the validation of column type."""
     def setUp(self):
         self.validator = DataFrameValidatorFixture()
 
-    def test_should_return_None_when_validate_is_success(self):
-        df = pd.DataFrame({'x': [0, 1], 'y': [0, 1]})
+    def test_valid(self):
+        df = pd.DataFrame({'i': [0, 1], 'f': [0., 1.]})
         self.assertIsNone(self.validator.validate(df))
 
-    def test_valid_when_given_float_series(self):
-        df = pd.DataFrame({'x': [0, 1], 'y': [0., 1.]})
+    def test_invalid_when_given_integer_series_to_float_column_validator(self):
+        df = pd.DataFrame({'i': [0, 1], 'f': [0, 1]})
         self.assertRaises(ValidationError, self.validator.validate, df)
 
-    def test_valid_when_matches_column_and_row_numbers(self):
-        self.validator.row_num, self.validator.column_num = 3, 2
-        df = pd.DataFrame({'x': [0, 1, 2], 'y': [1, 2, 3]})
+
+class DataFrameValidatorFixtureWithSize(validators.DataFrameValidator):
+    """Fixture for testing the validation of column and row number."""
+    row_num = 3
+    column_num = 2
+
+
+class DataFrameValidatorSizeTest(TestCase):
+    """Testing the validation of column and row number."""
+    def setUp(self):
+        self.validator = DataFrameValidatorFixtureWithSize()
+
+    def test_valid_when_matches_row_numbers(self):
+        df = pd.DataFrame({'x': [0, 1, 2], 'y': [1., 2., 3.]})
         self.assertIsNone(self.validator.validate(df))
-
-    def test_invalid_when_not_matches_column_numbers(self):
-        self.validator.row_num, self.validator.column_num = 3, 3
-        df = pd.DataFrame({'x': [0, 1, 2], 'y': [1, 2, 3]})
-        self.assertRaises(ValidationError, self.validator.validate, df)
 
     def test_invalid_when_not_matches_row_numbers(self):
-        self.validator.row_num, self.validator.column_num = 2, 2
-        df = pd.DataFrame({'x': [0, 1, 2], 'y': [1, 2, 3]})
+        df = pd.DataFrame({'x': [0, 1], 'y': [1., 2.]})
+        self.assertRaises(ValidationError, self.validator.validate, df)
+
+    def test_invalid_when_not_matches_column_numbers(self):
+        df = pd.DataFrame({'x': [0, 1, 2], 'y': [1., 2., 3.], 'z': [1, 2, 3]})
         self.assertRaises(ValidationError, self.validator.validate, df)
