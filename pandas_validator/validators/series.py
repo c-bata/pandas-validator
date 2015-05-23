@@ -45,3 +45,24 @@ class IntegerSeriesValidator(BaseSeriesValidator):
 class FloatSeriesValidator(IntegerSeriesValidator):
     def __init__(self, series_type=np.float64, *args, **kwargs):
         super(FloatSeriesValidator, self).__init__(series_type=series_type, *args, **kwargs)
+
+class CharSeriesValidator(BaseSeriesValidator):
+    def __init__(self, min_length=None, max_length=None, *args, **kwargs):
+        super(CharSeriesValidator, self).__init__(*args, **kwargs)
+
+        self.min_length, self.max_length = min_length, max_length
+
+    def _check_type(self, series):
+        if len(series[series.map(lambda x: not isinstance(x, str))]) > 0:
+            raise ValidationError('Series has the different type variables.')
+
+    def validate(self, series):
+        super(CharSeriesValidator, self).validate(series)
+
+        if (self.max_length is not None and
+                series.map(lambda x: len(x)).max() > self.max_length):
+            raise ValidationError('Series has the value longer than max.')
+
+        if (self.min_length is not None and
+                series.map(lambda x: len(x)).min() < self.min_length):
+            raise ValidationError('Series has the value shorter than min.')

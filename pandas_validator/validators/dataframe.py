@@ -1,4 +1,4 @@
-from pandas_validator.validators import ColumnValidatorMixin
+from pandas_validator.validators.columns import ColumnValidatorMixin
 from pandas_validator.core.exceptions import ValidationError
 
 

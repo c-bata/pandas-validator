@@ -27,3 +27,15 @@ class FloatColumnValidatorTest(TestCase):
     def test_is_invalid(self):
         column_validator = validators.FloatColumnValidator('label2')
         self.assertFalse(column_validator.is_valid(self.dataframe))
+
+class CharColumnValidatorTest(TestCase):
+    def setUp(self):
+        self.dataframe = pd.DataFrame({'label1': ['', 'aa'], 'label2': [0, 1]})
+
+    def test_is_valid(self):
+        column_validator = validators.CharColumnValidator('label1')
+        self.assertTrue(column_validator.is_valid(self.dataframe))
+
+    def test_is_invalid(self):
+        column_validator = validators.CharColumnValidator('label2')
+        self.assertFalse(column_validator.is_valid(self.dataframe))
