@@ -2,6 +2,7 @@ from pandas_validator.validators import (
     BaseSeriesValidator,
     IntegerSeriesValidator,
     FloatSeriesValidator,
+    CharSeriesValidator,
 )
 
 
@@ -18,4 +19,7 @@ class IntegerColumnValidator(ColumnValidatorMixin, IntegerSeriesValidator):
     pass
 
 class FloatColumnValidator(ColumnValidatorMixin, FloatSeriesValidator):
+    pass
+
+class CharColumnValidator(ColumnValidatorMixin, CharSeriesValidator,):
     pass
