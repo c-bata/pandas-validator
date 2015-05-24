@@ -6,6 +6,8 @@
 Welcome to pandas-validator's documentation!
 ============================================
 
+.. include:: ../../README.rst
+
 Contents:
 
 .. toctree::
