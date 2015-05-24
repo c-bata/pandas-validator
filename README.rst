@@ -38,6 +38,12 @@ Please see the following demo written by ipython notebook.
 * `Demo in Japanese <https://github.com/c-bata/pandas-validator/blob/master/example/pandas_validator_example_ja.ipynb>`_
 * `Demo in English <https://github.com/c-bata/pandas-validator/blob/master/example/pandas_validator_example_en.ipynb>`_
 
+Requirements
+============
+
+* Traget Python version is 2.7, 3.4
+* pandas
+
 License
 =======
 
