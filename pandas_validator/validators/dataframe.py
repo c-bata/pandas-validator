@@ -14,8 +14,9 @@ class DataFrameValidator(object):
         self._check_dataframe_size(df)
 
     def _run_column_validator(self, df):
-        fields = [getattr(self, x) for x in dir(self) if not x.startswith('__')]
-        column_validators = [x for x in fields if isinstance(x, ColumnValidatorMixin)]
+        fields = [getattr(self, x) for x in dir(self)]
+        column_validators = [x for x in fields
+                             if isinstance(x, ColumnValidatorMixin)]
 
         for v in column_validators:
             v.validate(df)
@@ -23,10 +24,12 @@ class DataFrameValidator(object):
 
     def _check_dataframe_size(self, df):
         if self.column_num is not None and len(df.columns) != self.column_num:
-            raise ValidationError('DataFrame columns number is not %s' % self.column_num)
+            raise ValidationError('DataFrame columns number is not %s'
+                                  % self.column_num)
 
         if self.row_num is not None and len(df.index) != self.row_num:
-            raise ValidationError('DataFrame rows number is not %s' % self.row_num)
+            raise ValidationError('DataFrame rows number is not %s'
+                                  % self.row_num)
 
     def is_valid(self, df):
         try:

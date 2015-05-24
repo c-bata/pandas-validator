@@ -1,3 +1,5 @@
+# flake8: noqa
+
 from pandas_validator.validators.series import (
     BaseSeriesValidator,
     IntegerSeriesValidator,

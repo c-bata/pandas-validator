@@ -44,7 +44,9 @@ class IntegerSeriesValidator(BaseSeriesValidator):
 
 class FloatSeriesValidator(IntegerSeriesValidator):
     def __init__(self, series_type=np.float64, *args, **kwargs):
-        super(FloatSeriesValidator, self).__init__(series_type=series_type, *args, **kwargs)
+        super(FloatSeriesValidator, self).__init__(series_type=series_type,
+                                                   *args, **kwargs)
+
 
 class CharSeriesValidator(BaseSeriesValidator):
     def __init__(self, min_length=None, max_length=None, *args, **kwargs):

@@ -26,9 +26,11 @@ class BaseSeriesValidatorTest(TestCase):
         series = pd.Series([0., 1.])
         self.assertRaises(ValidationError, self.validator.validate, series)
 
+
 class IntegerSeriesValidatorTest(TestCase):
     def setUp(self):
-        self.validator = validators.IntegerSeriesValidator(min_value=0, max_value=2)
+        self.validator = validators.IntegerSeriesValidator(min_value=0,
+                                                           max_value=2)
 
     def test_is_valid(self):
         series = pd.Series([0, 1, 2])
@@ -45,7 +47,8 @@ class IntegerSeriesValidatorTest(TestCase):
 
 class FloatSeriesValidatorTest(TestCase):
     def setUp(self):
-        self.validator = validators.FloatSeriesValidator(min_value=0, max_value=2)
+        self.validator = validators.FloatSeriesValidator(min_value=0,
+                                                         max_value=2)
 
     def test_is_valid(self):
         series = pd.Series([0., 1., 2.])
@@ -66,7 +69,8 @@ class FloatSeriesValidatorTest(TestCase):
 
 class CharSeriesValidatorTest(TestCase):
     def setUp(self):
-        self.validator = validators.CharSeriesValidator(min_length=0, max_length=4)
+        self.validator = validators.CharSeriesValidator(min_length=0,
+                                                        max_length=4)
 
     def test_is_valid(self):
         series = pd.Series(['', 'ab', 'abcd'])
@@ -79,4 +83,3 @@ class CharSeriesValidatorTest(TestCase):
     def test_is_invalid_by_too_long_length(self):
         series = pd.Series(['', 'ab', 'abcde'])
         self.assertFalse(self.validator.is_valid(series))
-
