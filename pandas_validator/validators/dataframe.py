@@ -1,5 +1,5 @@
-from pandas_validator.validators.columns import ColumnValidatorMixin
-from pandas_validator.core.exceptions import ValidationError
+from .columns import ColumnValidatorMixin
+from ..core.exceptions import ValidationError
 
 
 class DataFrameValidator(object):

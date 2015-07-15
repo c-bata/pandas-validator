@@ -1,4 +1,4 @@
-from pandas_validator.validators import (
+from .series import (
     BaseSeriesValidator,
     IntegerSeriesValidator,
     FloatSeriesValidator,

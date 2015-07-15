@@ -1,6 +1,6 @@
 import numpy as np
 
-from pandas_validator.core.exceptions import ValidationError
+from ..core.exceptions import ValidationError
 
 
 class BaseSeriesValidator(object):
