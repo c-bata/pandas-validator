@@ -17,7 +17,9 @@ And this can define validator like django form class.
 
 .. code-block:: python
 
-    class SampleDataFrameValidator(validators.DataFrameValidator):
+    import pandas_validator as pv
+
+    class SampleDataFrameValidator(pv.DataFrameValidator):
         row_num = 5
         column_num = 2
         label1 = validators.IntegerColumnValidator('label1', min_value=0, max_value=10)
