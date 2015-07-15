@@ -1,14 +1,14 @@
 from unittest import TestCase
 import pandas as pd
 
-from pandas_validator import validators
+import pandas_validator as pv
 from pandas_validator.core.exceptions import ValidationError
 
 
-class DataFrameValidatorFixture(validators.DataFrameValidator):
+class DataFrameValidatorFixture(pv.DataFrameValidator):
     """Fixture for testing the validation of column type."""
-    integer_field = validators.IntegerColumnValidator('i')
-    float_field = validators.FloatColumnValidator('f')
+    integer_field = pv.IntegerColumnValidator('i')
+    float_field = pv.FloatColumnValidator('f')
 
 
 class DataFrameValidatorTest(TestCase):
@@ -25,7 +25,7 @@ class DataFrameValidatorTest(TestCase):
         self.assertRaises(ValidationError, self.validator.validate, df)
 
 
-class DataFrameValidatorFixtureWithSize(validators.DataFrameValidator):
+class DataFrameValidatorFixtureWithSize(pv.DataFrameValidator):
     """Fixture for testing the validation of column and row number."""
     row_num = 3
     column_num = 2

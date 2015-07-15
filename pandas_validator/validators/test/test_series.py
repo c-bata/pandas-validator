@@ -2,13 +2,13 @@ from unittest import TestCase
 import pandas as pd
 import numpy as np
 
-from pandas_validator import validators
+import pandas_validator as pv
 from pandas_validator.core.exceptions import ValidationError
 
 
 class BaseSeriesValidatorTest(TestCase):
     def setUp(self):
-        self.validator = validators.BaseSeriesValidator(series_type=np.int64)
+        self.validator = pv.BaseSeriesValidator(series_type=np.int64)
 
     def test_is_valid_when_given_int64_series(self):
         series = pd.Series([0, 1])
@@ -29,8 +29,7 @@ class BaseSeriesValidatorTest(TestCase):
 
 class IntegerSeriesValidatorTest(TestCase):
     def setUp(self):
-        self.validator = validators.IntegerSeriesValidator(min_value=0,
-                                                           max_value=2)
+        self.validator = pv.IntegerSeriesValidator(min_value=0, max_value=2)
 
     def test_is_valid(self):
         series = pd.Series([0, 1, 2])
@@ -47,8 +46,7 @@ class IntegerSeriesValidatorTest(TestCase):
 
 class FloatSeriesValidatorTest(TestCase):
     def setUp(self):
-        self.validator = validators.FloatSeriesValidator(min_value=0,
-                                                         max_value=2)
+        self.validator = pv.FloatSeriesValidator(min_value=0, max_value=2)
 
     def test_is_valid(self):
         series = pd.Series([0., 1., 2.])
@@ -69,8 +67,7 @@ class FloatSeriesValidatorTest(TestCase):
 
 class CharSeriesValidatorTest(TestCase):
     def setUp(self):
-        self.validator = validators.CharSeriesValidator(min_length=0,
-                                                        max_length=4)
+        self.validator = pv.CharSeriesValidator(min_length=0, max_length=4)
 
     def test_is_valid(self):
         series = pd.Series(['', 'ab', 'abcd'])
