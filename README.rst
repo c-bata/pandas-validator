@@ -16,6 +16,9 @@ pandas-validator
    :target: https://codeclimate.com/github/c-bata/pandas-validator
    :alt: Code Climate
 
+.. image:: https://coveralls.io/repos/c-bata/pandas-validator/badge.svg?branch=master&service=github
+  :target: https://coveralls.io/github/c-bata/pandas-validator?branch=master
+
 
 Validates the pandas object such as DataFrame and Series.
 And this can define validator like django form class.
