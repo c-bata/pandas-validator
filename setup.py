@@ -20,5 +20,6 @@ setup(
     install_requirements=['pandas'],
     keywords=['pandas', 'validator'],
     license='MIT License',
-    include_package_data=True
+    include_package_data=True,
+    test_suite='pandas_validator',
 )
