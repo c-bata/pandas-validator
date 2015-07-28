@@ -9,6 +9,6 @@ install:
   - pip install coveralls
 script:
   - tox
-  - coverage run --source=pandas_validator setup.py test
 after_success:
+  - coverage run --source=pandas_validator setup.py test
   - coveralls
