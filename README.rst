@@ -74,7 +74,7 @@ http://pandas-validator.readthedocs.org
 Requirements
 ============
 
-* Traget Python version is 2.7, 3.4
+* Traget Python version is 2.7, 3.3, 3.4, 3.5
 * pandas
 
 License
