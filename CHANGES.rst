@@ -1,6 +1,12 @@
 CHANGES
 =======
 
+0.3.1 (2015-10-28)
+------------------
+
+* Update support python version
+* Update dependencies library version
+
 0.3.0 (2015-07-15)
 ------------------
 

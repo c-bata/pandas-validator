@@ -2,7 +2,7 @@ import os
 from setuptools import setup
 
 __author__ = 'Masashi Shibata <contact@c-bata.link>'
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(BASE_PATH, 'README.rst')).read()
