@@ -12,10 +12,6 @@ pandas-validator
     :target: https://readthedocs.org/projects/pandas-validator/?badge=latest
     :alt: Documentation Status
 
-.. image:: https://codeclimate.com/github/c-bata/pandas-validator/badges/gpa.svg
-   :target: https://codeclimate.com/github/c-bata/pandas-validator
-   :alt: Code Climate
-
 .. image:: https://coveralls.io/repos/c-bata/pandas-validator/badge.svg?branch=master&service=github
   :target: https://coveralls.io/github/c-bata/pandas-validator?branch=master
 
@@ -74,7 +70,7 @@ http://pandas-validator.readthedocs.org
 Requirements
 ============
 
-* Traget Python version is 2.7, 3.4
+* Traget Python version is 2.7, 3.3, 3.4, 3.5
 * pandas
 
 License
