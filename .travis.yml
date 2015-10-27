@@ -8,10 +8,10 @@ env:
   - TOXENV=py34
   - TOXENV=py35
 install:
-  - pip install tox
-  - pip install coveralls
+  - travis_retry pip install tox
+  - travis_retry pip install coveralls
 script:
-  - tox
+  - travis_retry tox
 after_success:
   - coverage run --source=pandas_validator setup.py test
   - coveralls
