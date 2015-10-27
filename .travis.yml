@@ -1,6 +1,7 @@
 sudo: false
 language: python
 python: 2.7
+cache: pip
 env:
   - TOXENV=py27
   - TOXENV=py34
@@ -12,3 +13,4 @@ script:
   - coverage run --source=pandas_validator setup.py test
 after_success:
   - coveralls
+
