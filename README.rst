@@ -2,7 +2,7 @@
 pandas-validator
 ================
 
-.. image:: https://travis-ci.org/c-bata/pandas-validator.svg
+.. image:: https://travis-ci.org/c-bata/pandas-validator.svg?branch=master
     :target: https://travis-ci.org/c-bata/pandas-validator
 
 .. image:: https://badge.fury.io/py/pandas_validator.svg
