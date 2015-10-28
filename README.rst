@@ -12,9 +12,6 @@ pandas-validator
     :target: https://readthedocs.org/projects/pandas-validator/?badge=latest
     :alt: Documentation Status
 
-.. image:: https://coveralls.io/repos/c-bata/pandas-validator/badge.svg?branch=master&service=github
-  :target: https://coveralls.io/github/c-bata/pandas-validator?branch=master
-
 
 Validates the pandas object such as DataFrame and Series.
 And this can define validator like django form class.
@@ -30,7 +27,7 @@ And this can define validator like django form class.
         label1 = pv.IntegerColumnValidator('label1', min_value=0, max_value=10)
         label2 = pv.FloatColumnValidator('label2', min_value=0, max_value=10)
 
-    validator = SampleDataFrameValidator
+    validator = SampleDataFrameValidator()
 
     df = pd.DataFrame({'label1': [0, 1, 2, 3, 4], 'label2': [5.0, 6.0, 7.0, 8.0, 9.0]})
     validator.is_valid(df)  # True.
