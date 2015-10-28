@@ -1,25 +1,44 @@
 sudo: false
 language: python
-python:
-  - "2.6"
-  - "2.7"
-  - "3.2"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-cache: pip
+python: 3.5
+cache:
+  directories:
+    - $HOME/.tox
+before_cache:
+  - rm -f $HOME/.tox/$TOXENV/log/*.log
 env:
-  - PANDAS="pandas<0.14"
-  - PANDAS="pandas<0.15"
-  - PANDAS="pandas<0.16"
-  - PANDAS="pandas<0.17"
-  - PANDAS="pandas>=0.17"
-# don't use tox for caching on travis-ci.
+  - TOXENV=py27-pandas14
+  - TOXENV=py27-pandas15
+  - TOXENV=py27-pandas16
+  - TOXENV=py27-pandas17
+
+  - TOXENV=py32-pandas14
+  - TOXENV=py32-pandas15
+  - TOXENV=py32-pandas16
+  - TOXENV=py32-pandas17
+
+  - TOXENV=py33-pandas14
+  - TOXENV=py33-pandas15
+  - TOXENV=py33-pandas16
+  - TOXENV=py33-pandas17
+
+  - TOXENV=py34-pandas14
+  - TOXENV=py34-pandas15
+  - TOXENV=py34-pandas16
+  - TOXENV=py34-pandas17
+
+  - TOXENV=py35-pandas14
+  - TOXENV=py35-pandas15
+  - TOXENV=py35-pandas16
+  - TOXENV=py35-pandas17
+
+  - TOXENV=flake8
+
 install:
-  - travis_retry pip install -q $PANDAS
+  - travis_retry pip install -q tox
   - travis_retry pip install -q coveralls
 script:
-  - py.test pandas_validator
+  - travis_retry tox
 after_success:
   - coverage run --source=pandas_validator setup.py test
   - coveralls

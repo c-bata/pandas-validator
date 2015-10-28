@@ -67,11 +67,13 @@ The latest documentation is hosted at ReadTheDocs.
 
 http://pandas-validator.readthedocs.org
 
+
 Requirements
 ============
 
-* Traget Python version is 2.7, 3.3, 3.4, 3.5
-* pandas
+* Support python version: 2.7, 3.2, 3.3, 3.4, 3.5
+* Support pandas version: 0.14, 0.15, 0.16, 0.17
+
 
 License
 =======
