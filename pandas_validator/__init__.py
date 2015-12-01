@@ -14,3 +14,9 @@ from .validators.columns import (
 from .validators.dataframe import (
     DataFrameValidator,
 )
+
+__author__ = 'Masashi Shibata <contact@c-bata.link>'
+__version__ = '0.4.0'
+__license__ = 'MIT License'
+__author_email__ = 'contact@c-bata.link'
+
