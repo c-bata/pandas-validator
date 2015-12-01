@@ -12,11 +12,6 @@ env:
   - TOXENV=py27-pandas16
   - TOXENV=py27-pandas17
 
-  - TOXENV=py32-pandas14
-  - TOXENV=py32-pandas15
-  - TOXENV=py32-pandas16
-  - TOXENV=py32-pandas17
-
   - TOXENV=py33-pandas14
   - TOXENV=py33-pandas15
   - TOXENV=py33-pandas16
