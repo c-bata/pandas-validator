@@ -1,16 +1,18 @@
 import os
+import sys
 from setuptools import setup, find_packages
-from pandas_validator import (
-    __version__,
-    __license__,
-    __author__,
-    __author_email__,
-)
+from setuptools.command.test import test as TestCommand
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(BASE_PATH, 'README.rst')).read()
 CHANGES = open(os.path.join(BASE_PATH, 'CHANGES.rst')).read()
 
+__author__ = 'Masashi Shibata <contact@c-bata.link>'
+__version__ = '0.4.0'
+__license__ = 'MIT License'
+__author_email__ = 'contact@c-bata.link'
+__url__ = 'https://github.com/c-bata/pandas-validator'
+__description__ = 'Validate the pandas objects such as DataFrame and Series.'
 __classifiers__ = [
     'Development Status :: 3 - Alpha',
     'Environment :: Console',
@@ -26,19 +28,41 @@ __classifiers__ = [
     'Programming Language :: Python :: 3.5',
 ]
 
+
+class PyTest(TestCommand):
+    user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
+
+    def initialize_options(self):
+        TestCommand.initialize_options(self)
+        self.pytest_args = []
+
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        # import here, cause outside the eggs aren't loaded
+        import pytest
+        errno = pytest.main(self.pytest_args)
+        sys.exit(errno)
+
+
 setup(
     name='pandas_validator',
     version=__version__,
     author=__author__,
     author_email=__author_email__,
-    url='https://github.com/c-bata/pandas-validator',
-    description='Validate the pandas objects such as DataFrame and Series.',
+    url=__url__,
+    description=__description__,
     long_description=README + '\n\n' + CHANGES,
     packages=find_packages(exclude=['test*']),
     install_requirements=['pandas'],
     keywords='pandas validator',
     license=__license__,
     include_package_data=True,
+    tests_require=['pytest'],
+    cmdclass={'test': PyTest},
     test_suite='pandas_validator',
 )
 
