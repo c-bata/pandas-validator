@@ -16,6 +16,21 @@ pandas-validator
 Validates the pandas object such as DataFrame and Series.
 And this can define validator like django form class.
 
+
+Why bugs occur in Data Wrangling with pandas
+--------------------------------------------
+
+When we wrangle our data with pandas, We use `DataFrame` frequently.
+`DataFrame` is very powerfull and easy to handle.
+But `DataFrame` has no it's schema, so It allows irregular values without being aware of it.
+We are confused by these values and affect the results of data wrangling.
+
+`pandas-schema` offeres the functions for validating `DataFrame` or `Series` objects and generating factory data.
+
+
+Example
+-------
+
 .. code-block:: python
 
     import pandas as pd
