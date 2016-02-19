@@ -65,4 +65,3 @@ setup(
     cmdclass={'test': PyTest},
     test_suite='pandas_validator',
 )
-

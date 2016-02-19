@@ -7,22 +7,18 @@ cache:
 before_cache:
   - rm -f $HOME/.tox/$TOXENV/log/*.log
 env:
-  - TOXENV=py27-pandas14
   - TOXENV=py27-pandas15
   - TOXENV=py27-pandas16
   - TOXENV=py27-pandas17
 
-  - TOXENV=py33-pandas14
   - TOXENV=py33-pandas15
   - TOXENV=py33-pandas16
   - TOXENV=py33-pandas17
 
-  - TOXENV=py34-pandas14
   - TOXENV=py34-pandas15
   - TOXENV=py34-pandas16
   - TOXENV=py34-pandas17
 
-  - TOXENV=py35-pandas14
   - TOXENV=py35-pandas15
   - TOXENV=py35-pandas16
   - TOXENV=py35-pandas17
@@ -37,4 +33,3 @@ script:
 after_success:
   - coverage run --source=pandas_validator setup.py test
   - coveralls
-
