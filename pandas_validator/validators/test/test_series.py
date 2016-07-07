@@ -80,3 +80,16 @@ class CharSeriesValidatorTest(TestCase):
     def test_is_invalid_by_too_long_length(self):
         series = pd.Series(['', 'ab', 'abcde'])
         self.assertFalse(self.validator.is_valid(series))
+
+
+class LambdaSeriesValidatorTest(TestCase):
+    def setUp(self):
+        self.series = pd.Series([1, 'a', b'4', 2j])
+
+    def test_is_valid_when_lambda_returns_true(self):
+        validator = pv.LambdaSeriesValidator(lambda s: True)
+        self.assertTrue(validator.is_valid(self.series))
+
+    def test_is_invalid_when_lambda_returns_false(self):
+        validator = pv.LambdaSeriesValidator(lambda s: False)
+        self.assertFalse(validator.is_valid(self.series))

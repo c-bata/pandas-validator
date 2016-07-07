@@ -3,6 +3,7 @@ from .series import (
     IntegerSeriesValidator,
     FloatSeriesValidator,
     CharSeriesValidator,
+    LambdaSeriesValidator
 )
 
 
@@ -23,5 +24,9 @@ class FloatColumnValidator(ColumnValidatorMixin, FloatSeriesValidator):
     pass
 
 
-class CharColumnValidator(ColumnValidatorMixin, CharSeriesValidator,):
+class CharColumnValidator(ColumnValidatorMixin, CharSeriesValidator):
+    pass
+
+
+class LambdaColumnValidator(ColumnValidatorMixin, LambdaSeriesValidator):
     pass
