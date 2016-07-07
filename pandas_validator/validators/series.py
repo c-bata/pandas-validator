@@ -68,3 +68,19 @@ class CharSeriesValidator(BaseSeriesValidator):
         if (self.min_length is not None and
                 series.map(lambda x: len(x)).min() < self.min_length):
             raise ValidationError('Series has the value shorter than min.')
+
+
+class LambdaSeriesValidator(BaseSeriesValidator):
+    def __init__(self, function, *args, **kwargs):
+        super(LambdaSeriesValidator, self).__init__(*args, **kwargs)
+
+        self.function = function
+
+    def _check_type(self, series):
+        pass
+
+    def validate(self, series):
+        super(LambdaSeriesValidator, self).validate(series)
+
+        if (not self.function(series)):
+            raise ValidationError('Validator function returned False.')

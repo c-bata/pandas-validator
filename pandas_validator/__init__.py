@@ -5,11 +5,13 @@ from .validators.series import (
     IntegerSeriesValidator,
     FloatSeriesValidator,
     CharSeriesValidator,
+    LambdaSeriesValidator
 )
 from .validators.columns import (
     IntegerColumnValidator,
     FloatColumnValidator,
     CharColumnValidator,
+    LambdaColumnValidator
 )
 from .validators.dataframe import (
     DataFrameValidator,
