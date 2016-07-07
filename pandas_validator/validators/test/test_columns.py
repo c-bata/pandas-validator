@@ -41,3 +41,16 @@ class CharColumnValidatorTest(TestCase):
     def test_is_invalid(self):
         column_validator = pv.CharColumnValidator('label2')
         self.assertFalse(column_validator.is_valid(self.dataframe))
+
+
+class LambdaColumnValidatorTest(TestCase):
+    def setUp(self):
+        self.dataframe = pd.DataFrame({'label1': [1, 'a']})
+
+    def test_is_valid_when_lambda_returns_true(self):
+        validator = pv.LambdaColumnValidator('label1', lambda df: True)
+        self.assertTrue(validator.is_valid(self.dataframe))
+
+    def test_is_invalid_when_lambda_returns_false(self):
+        validator = pv.LambdaColumnValidator('label1', lambda df: False)
+        self.assertFalse(validator.is_valid(self.dataframe))
