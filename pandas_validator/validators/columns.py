@@ -24,7 +24,7 @@ class FloatColumnValidator(ColumnValidatorMixin, FloatSeriesValidator):
     pass
 
 
-class CharColumnValidator(ColumnValidatorMixin, CharSeriesValidator,):
+class CharColumnValidator(ColumnValidatorMixin, CharSeriesValidator):
     pass
 
 
