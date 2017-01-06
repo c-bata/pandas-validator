@@ -10,10 +10,8 @@ class DataFrameValidator(object):
     column_num = None  # int The number of column.
     row_num = None  # int The number of row.
 
-    def __init__(self, nullable=False, row_num=None, column_num=None):
+    def __init__(self, nullable=False):
         self.nullable = nullable
-        self.row_num = row_num
-        self.column_num = column_num
         self._setup_index_and_columns_validator()
 
     def _setup_index_and_columns_validator(self):
@@ -22,13 +20,6 @@ class DataFrameValidator(object):
 
         if self.column_num is not None and self.columns is None:
             self.columns = ColumnsValidator(size=self.column_num)
-
-    def validate(self, df, **kwargs):
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-        self._run_index_and_columns_validator(df)
-        self._run_column_validator(df)
-        self._check_dataframe_size(df)
 
     def _run_column_validator(self, df):
         fields = [getattr(self, x) for x in dir(self)]
@@ -57,10 +48,16 @@ class DataFrameValidator(object):
             raise ValidationError('DataFrame rows number is not %s'
                                   % self.row_num)
 
-    def is_valid(self, df):
+    def is_valid(self, df, raise_exception=False, **kwargs):
         try:
-            self.validate(df)
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+            self._run_index_and_columns_validator(df)
+            self._run_column_validator(df)
+            self._check_dataframe_size(df)
         except ValidationError:
-            return False
+            if not raise_exception:
+                return False
+            raise
         else:
             return True
