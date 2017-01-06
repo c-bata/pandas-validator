@@ -16,4 +16,8 @@ from .validators.columns import (
 from .validators.dataframe import (
     DataFrameValidator,
 )
-
+from .validators.index import (
+    BaseIndexValidator,
+    IndexValidator,
+    ColumnsValidator,
+)

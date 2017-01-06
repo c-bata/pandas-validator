@@ -1,5 +1,6 @@
 from unittest import TestCase
 import pandas as pd
+import numpy as np
 
 import pandas_validator as pv
 from pandas_validator.core.exceptions import ValidationError
@@ -46,4 +47,50 @@ class DataFrameValidatorSizeTest(TestCase):
 
     def test_invalid_when_not_matches_column_numbers(self):
         df = pd.DataFrame({'x': [0, 1, 2], 'y': [1., 2., 3.], 'z': [1, 2, 3]})
+        self.assertRaises(ValidationError, self.validator.validate, df)
+
+
+class DataFrameValidatorFixtureWithIndex(pv.DataFrameValidator):
+    """Fixture for testing the validation of index validator."""
+    index = pv.IndexValidator(size=3, type=np.int64)
+
+
+class DataFrameValidatorIndexTest(TestCase):
+    """Testing the validation of index size and type."""
+    def setUp(self):
+        self.validator = DataFrameValidatorFixtureWithIndex()
+
+    def test_valid_when_matches_index_size_and_type(self):
+        df = pd.DataFrame([0, 1, 2])
+        self.assertIsNone(self.validator.validate(df))
+
+    def test_invalid_when_not_matches_index_size(self):
+        df = pd.DataFrame([0, 1, 2, 3])
+        self.assertRaises(ValidationError, self.validator.validate, df)
+
+    def test_invalid_when_not_matches_index_type(self):
+        df = pd.DataFrame([0, 1, 2], index=['a', 'b', 'c'])
+        self.assertRaises(ValidationError, self.validator.validate, df)
+
+
+class DataFrameValidatorFixtureWithColumns(pv.DataFrameValidator):
+    """Fixture for testing the validation of columns validator."""
+    columns = pv.ColumnsValidator(size=2, type=np.object_)
+
+
+class DataFrameValidatorColumnsIndexTest(TestCase):
+    """Testing the validation of columns size and type"""
+    def setUp(self):
+        self.validator = DataFrameValidatorFixtureWithColumns()
+
+    def test_valid_when_matches_columns_size_and_type(self):
+        df = pd.DataFrame({'x': [0, 1, 2], 'y': [1., 2., 3.]})
+        self.assertIsNone(self.validator.validate(df))
+
+    def test_invalid_when_not_matches_columns_size(self):
+        df = pd.DataFrame({'x': [0, 1, 2], 'y': [1., 2., 3.], 'z': [1, 2, 3]})
+        self.assertRaises(ValidationError, self.validator.validate, df)
+
+    def test_invalid_when_not_matches_columns_type(self):
+        df = pd.DataFrame([[0, 1, 2], [1., 2., 3.]])
         self.assertRaises(ValidationError, self.validator.validate, df)
