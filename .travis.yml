@@ -1,38 +1,34 @@
 sudo: false
 language: python
-python: 3.5
+python: 3.6
 cache:
   directories:
     - "$HOME/.tox"
 before_cache:
   - rm -f $HOME/.tox/$TOXENV/log/*.log
 env:
-  - TOXENV=py27-pandas15
-  - TOXENV=py27-pandas16
-  - TOXENV=py27-pandas17
+  - TOXENV=py27-pandas18
+  - TOXENV=py27-pandas19
 
-  - TOXENV=py33-pandas15
-  - TOXENV=py33-pandas16
-  - TOXENV=py33-pandas17
+  - TOXENV=py34-pandas18
+  - TOXENV=py34-pandas19
 
-  - TOXENV=py34-pandas15
-  - TOXENV=py34-pandas16
-  - TOXENV=py34-pandas17
+  - TOXENV=py35-pandas18
+  - TOXENV=py35-pandas19
 
-  - TOXENV=py35-pandas15
-  - TOXENV=py35-pandas16
-  - TOXENV=py35-pandas17
+  - TOXENV=py36-pandas18
+  - TOXENV=py36-pandas19
 
   - TOXENV=flake8
 
 install:
   - travis_retry pip install -q tox
   - travis_retry pip install -q coveralls
+  - travis_retry pip install -r requirements/general.txt
 script:
   - travis_retry tox
 after_success:
   - coverage run --source=pandas_validator setup.py test
   - coveralls
 notifications:
-  slack:
-    secure: KbetnkfttJJ/EA1hhNjL/n/ivCev3nBqXct5dZ9foJQnwppN20YHiXgfK+QzXJa37CpAgFckDIpABoILtwVgpWFXqwhqn4oi4RpxjrQA69xnfrkEAqgEEIe85//6TzLEMDwVQKodpfbLVsh7S8Bl248SOXAn0qqNiYuI88qq37J6DZWW2tXOOOW3o9zxpbvWP+mxVSIsZvAbinRgt5GmgLi6ggBpXiyAEcaj7LJBuLqA2NyXpLSJlxoky0iwHE/Ev8vkuksi2yruo4JuNZ3T/O1nODdvkAjavrhH8sR6mFA0YbU6DZ5gJR6CESgcm9yUzfg/BwVCkfcIXnoW5eLk+aYY7XS2MBU3Wf/fNd3j9ja2RnfSpGrNvJPmttLd8kSkUQVSFguIWo6IbTcluDU1sX+HxGhlkN/ckbxfKAi307bnyViRdKLtLOHzzUjZrZgy3v1YeStSRiIgLd8DkYQY+CNf0cej7OM3ATiHILxCaJHbbspg29lCfa7xcZ9BKN82b1keVwlz/8exSCjTXQDFzmrirqLhdx5T5sGylaE00YtJuMr53KILdrfdWGpSWpC37Z3YqtbXXjGux0yVSKumA1AaC6sNY8cSdpcgw6YDeskInitl8fwrQIc0Fkf1HaN9HYx6ZRhSDANhJa27MkU4/RFM844jgDUEZ+gKu9Vs5gU=
+  email: false
