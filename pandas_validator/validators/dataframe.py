@@ -1,3 +1,5 @@
+import warnings
+
 from .columns import ColumnValidatorMixin
 from .index import IndexValidator, ColumnsValidator
 from ..core.exceptions import ValidationError
@@ -61,3 +63,7 @@ class DataFrameValidator(object):
             raise
         else:
             return True
+
+    def validate(self, df, **kwargs):
+        warnings.warn("deprecated", DeprecationWarning)
+        self.is_valid(df, raise_exception=True, **kwargs)
