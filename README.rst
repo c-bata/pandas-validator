@@ -8,9 +8,10 @@ pandas-validator
 .. image:: https://badge.fury.io/py/pandas_validator.svg
     :target: http://badge.fury.io/py/pandas_validator
 
-.. image:: https://readthedocs.org/projects/pandas-validator/badge/?version=latest
-    :target: https://readthedocs.org/projects/pandas-validator/?badge=latest
-    :alt: Documentation Status
+.. image:: https://coveralls.io/repos/github/c-bata/pandas-validator/badge.svg?branch=master
+    :target: https://coveralls.io/github/c-bata/pandas-validator?branch=master
+    :alt: Coveralls Status
+
 
 
 Validates the pandas object such as DataFrame and Series.
@@ -25,7 +26,7 @@ When we wrangle our data with pandas, We use `DataFrame` frequently.
 But `DataFrame` has no it's schema, so It allows irregular values without being aware of it.
 We are confused by these values and affect the results of data wrangling.
 
-`pandas-schema` offers the functions for validating `DataFrame` or `Series` objects and generating factory data.
+`pandas-validator` offers the functions for validating `DataFrame` or `Series` objects.
 
 
 Overview
