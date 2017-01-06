@@ -9,22 +9,14 @@ before_cache:
 env:
   - TOXENV=py27-pandas18
   - TOXENV=py27-pandas19
-
   - TOXENV=py34-pandas18
   - TOXENV=py34-pandas19
-
-  - TOXENV=py35-pandas18
-  - TOXENV=py35-pandas19
-
   - TOXENV=py36-pandas18
   - TOXENV=py36-pandas19
-
   - TOXENV=flake8
-
 install:
-  - travis_retry pip install -q tox
-  - travis_retry pip install -q coveralls
-  - travis_retry pip install -r requirements/general.txt
+  - travis_retry pip install -q tox coveralls
+  - travis_retry pip install -q -r requirements/general.txt
 script:
   - travis_retry tox
 after_success:
