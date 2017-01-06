@@ -25,11 +25,11 @@ When we wrangle our data with pandas, We use `DataFrame` frequently.
 But `DataFrame` has no it's schema, so It allows irregular values without being aware of it.
 We are confused by these values and affect the results of data wrangling.
 
-`pandas-schema` offeres the functions for validating `DataFrame` or `Series` objects and generating factory data.
+`pandas-schema` offers the functions for validating `DataFrame` or `Series` objects and generating factory data.
 
 
-Example
--------
+Overview
+--------
 
 .. code-block:: python
 
@@ -57,10 +57,16 @@ Example
 Getting Started
 ===============
 
+Requirements
+------------
+
+* Support python version: 2.7, 3.4, 3.5, 3.6
+* Support pandas version: 0.18, 0.19
+
 Installation
 ------------
 
-::
+.. code-block:: console
 
     $ pip install pandas_validator
 
@@ -71,20 +77,6 @@ Please see the following demo written by ipython notebook.
 
 * `Demo in Japanese <https://github.com/c-bata/pandas-validator/blob/master/example/pandas_validator_example_ja.ipynb>`_
 * `Demo in English <https://github.com/c-bata/pandas-validator/blob/master/example/pandas_validator_example_en.ipynb>`_
-
-Documentation
-=============
-
-The latest documentation is hosted at ReadTheDocs.
-
-http://pandas-validator.readthedocs.org
-
-
-Requirements
-============
-
-* Support python version: 2.7, 3.3, 3.4, 3.5
-* Support pandas version: 0.14, 0.15, 0.16, 0.17
 
 
 License
