@@ -4,6 +4,8 @@ CHANGES
 0.5.0 (2017-01-06)
 ------------------
 
+* Support Python3.6 and pandas 1.8, 1.9
+* Does not support Python 3.4 and pandas 1.6, 1.7.
 * Add LambdaColumnValidator
 * Add IndexValidator
 * ``.validate(df)`` method is deprecated. Please use ``.is_valid(df, raise_exception=True)``
